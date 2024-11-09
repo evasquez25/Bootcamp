@@ -8,6 +8,10 @@ class CardEditor extends React.Component {
     }
 
     addCard = () => {
+        if (!this.state.front.trim() || !this.state.back.trim()) {
+            alert('Please enter both a front and a back for the card.');
+            return;
+        } 
         this.props.addCard(this.state);
         this.setState({ front: '', back: '' });
     };
@@ -21,21 +25,23 @@ class CardEditor extends React.Component {
         const cards = this.props.cards.map((card, index) => {
             return (
                 <tr key={index}>
+                    <td>{index + 1}</td>
                     <td>{card.front}</td>
                     <td>{card.back}</td>
                     <td>
-                        <button onClick={() => this.deleteCard(index)}>Delete</button>
+                        <button className="delete-button" onClick={() => this.deleteCard(index)}>Delete</button>
                     </td>
                 </tr>
             )
         })
         return (
-            <div>
+            <div id="card-editor-container">
                 <h2>Card Editor</h2>
 
                 <table>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Front</th>
                             <th>Back</th>
                             <th>Delete</th>
@@ -54,7 +60,7 @@ class CardEditor extends React.Component {
                     onChange={this.handleChange} 
                     placeholder="Back of card" 
                     value={this.state.back} />
-                <button onClick={this.addCard} >Add Card</button>
+                <button id="add-card-btn" onClick={this.addCard} >Add Card</button>
                 <hr />
                 <button onClick={this.props.switchMode}>Go to card viewer</button>
             </div>

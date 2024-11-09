@@ -25,7 +25,13 @@ class App extends React.Component {
     this.setState({ cards: cards });
   }
 
-  switchMode = () => this.setState({ editor: !this.state.editor });
+  switchMode = () => {
+    if (this.state.cards.length === 0) {
+      alert('You must have at least one card to switch modes.');
+      return;
+    }
+    this.setState({ editor: !this.state.editor });
+  };
 
   render() {
     if (this.state.editor) {
@@ -38,7 +44,12 @@ class App extends React.Component {
         />
       );
     } else {
-      return <CardViewer switchMode={this.switchMode} />;
+      return (
+        <CardViewer 
+          switchMode={this.switchMode} 
+          cards={this.state.cards}
+        />
+      );
     }
   }
 }

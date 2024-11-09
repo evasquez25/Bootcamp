@@ -1,0 +1,24 @@
+#card {
+    border: 1px solid black;
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+    width: 30vh;
+    height: 30vh; 
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.arrow {
+    cursor: pointer;
+    padding: 5px 10px;
+}
