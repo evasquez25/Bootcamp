@@ -63,6 +63,8 @@ class CardEditor extends React.Component {
                     value={this.state.back} />
                 <button id="add-card-btn" onClick={this.addCard} >Add Card</button>
                 <hr />
+                <Link to="/">Go Home</Link>
+                <br></br>
                 <Link to="/viewer">Go to card viewer</Link>
             </div>
         );
