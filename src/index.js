@@ -25,6 +25,7 @@ const firebaseConfig = {
   };
 
 const firebaseApp = initializeApp(firebaseConfig);
+const database = getDatabase(firebaseApp);
 
 // Add firebase to reducers
 const rootReducer = combineReducers({
@@ -40,7 +41,9 @@ const rrfConfig = {
 };
 
 const rrfProps = {
-    firebase: firebaseApp,
+    firebase: {...firebaseApp,
+    database: database,
+    },
     config: rrfConfig,
     dispatch: store.dispatch,
 };
