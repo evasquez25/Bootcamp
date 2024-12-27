@@ -1,6 +1,11 @@
 import React from 'react';
 import "./CardViewer.css";
+
 import { Link } from 'react-router-dom';
+import { firebaseConnect, isLoaded } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+
 
 class CardViewer extends React.Component {
     constructor(props) {
@@ -23,13 +28,28 @@ class CardViewer extends React.Component {
     }
 
     render() {
+        console.log('Props in render:', this.props);
+
+        console.log("CARDS HAVE LOADED?: ", isLoaded(this.props.cards));
+        console.log("CARDS: ", this.props.cards);
+
+        if (!isLoaded(this.props.cards)) {
+            console.log('Cards are still loading...');
+            return <div>Loading...</div>;
+        }
+
+        if (!this.props.cards || this.props.cards.length === 0) {
+            console.log('No cards available:', this.props.cards);
+            return <div>No cards available</div>;
+        }
+
         const currentIndex = this.state.currentIndex;
         const totalCards = this.props.cards.length;
         const card = this.props.cards[this.state.currentIndex];
 
         return (
             <div>
-                <h2>Card Viewer</h2>
+                <h2>{this.props.name}</h2>
                 <div id="card" onClick={this.toggleSide}>
                     {this.state.showFront ? card.front : card.back}
                 </div>
@@ -46,4 +66,16 @@ class CardViewer extends React.Component {
     }
 }
 
-export default CardViewer;
+const mapStateToProps = (state) => {
+    console.log('Firebase state:', state.firebase.data);
+    const deck = state.firebase.data.deck1; 
+    const name = deck && deck.name; 
+    const cards = deck && deck.cards; 
+    return { name, cards };
+};
+
+
+export default compose(
+    firebaseConnect([{ path: '/flashcards/deck1', storeAs: 'deck1' }]),
+    connect(mapStateToProps),
+)(CardViewer); 

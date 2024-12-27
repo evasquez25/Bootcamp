@@ -4,6 +4,8 @@ import CardViewer from './CardViewer';
 import Homepage from './Homepage';
 import { Routes, Route } from 'react-router-dom';
 
+import Test from './test';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +34,7 @@ class App extends React.Component {
       <Routes>
         <Route path='/' element={
           <Homepage />
-        } />;
+        } />
 
         <Route path='/editor' element={
           <CardEditor   
@@ -40,11 +42,15 @@ class App extends React.Component {
           cards={this.state.cards} 
           deleteCard={this.deleteCard} 
           />
-        } />;
+        } />
 
         <Route path='/viewer' element={
           <CardViewer cards={this.state.cards} />
-        } />;
+        } />
+
+        <Route path='/test' element={
+          <Test />
+        } />
       </Routes>
     )
   }

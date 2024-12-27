@@ -1,0 +1,38 @@
+{
+  "flashcards": {
+    "deck1": {
+      "cards": [
+        {
+          "back": "Mitochondria",
+          "front": "What is the powerhouse of the cell?"
+        },
+        {
+          "back": "Deoxyribonucleic Acid",
+          "front": "What is DNA?"
+        },
+        {
+          "back": "Chloroplast",
+          "front": "What organelle is responsible for photosynthesis?"
+        }
+      ],
+      "name": "Biology Basics"
+    },
+    "deck2": {
+      "cards": [
+        {
+          "back": 4,
+          "front": "What is 2 + 2?"
+        },
+        {
+          "back": 4,
+          "front": "What is the square root of 16?"
+        },
+        {
+          "back": 30,
+          "front": "What is 5 * 6?"
+        }
+      ],
+      "name": "Math Fundamentals"
+    }
+  }
+}
