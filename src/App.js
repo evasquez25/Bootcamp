@@ -5,55 +5,25 @@ import Homepage from './Homepage';
 import { Switch, Route } from 'react-router-dom';
 
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cards: [
-        { front: 'front1', back: 'back1' },
-        { front: 'front2', back: 'back2' },
-      ], 
-    };
-  }
+const App = () => {
+  return (
+    <Switch>
+      <Route exact path="/" component={Homepage} />
 
-  addCard = card => {
-    const cards = this.state.cards.slice().concat(card);
-    this.setState({ cards: cards });
-  }
+      <Route path="/editor">
+        <CardEditor />
+      </Route>            
 
-  deleteCard = index => {
-    const cards = this.state.cards.slice();
-    cards.splice(index, 1);
-    this.setState({ cards: cards });
-  }
+      <Route exact path="/viewer/:deckID">
+          <CardViewer />
+      </Route>
 
-
-  render() {
-    return (
-      <Switch>
-        <Route exact path="/" component={Homepage} />
-
-        <Route
-          path="/editor"
-          render={(props) => (
-            <CardEditor
-              {...props}
-              addCard={this.addCard}
-              cards={this.state.cards}
-              deleteCard={this.deleteCard}
-            />
-          )}
-        />
-
-        <Route
-          path="/viewer/:deckID"
-          render={(props) => (
-            <CardViewer {...props} cards={this.state.cards} />
-          )}
-        />
-      </Switch>
-    );
-  }
-}
+      <Route>
+        <div>Page not found...</div>
+      </Route>
+      
+    </Switch>
+  );
+};
 
 export default App;

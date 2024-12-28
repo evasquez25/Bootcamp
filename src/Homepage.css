@@ -3,27 +3,36 @@
     padding: 250px;
 }
 
-/* Style for the title */
 #title {
     font-size: 24px;
     color: #333;
 }
 
-/* Style for the paragraph */
 #description {
     font-size: 16px;
     color: #555;
 }
 
-/* Container for the links with spacing */
-#links {
+.link-to-editor {
     margin-top: 20px;
 }
 
-/* Styling for the links */
+#deck-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#deck-list li {
+    margin: 10px 0;
+}
+
 .link {
-    margin: 30px;
     text-decoration: none;
-    color: blue;
+    color: #007bff;
     font-size: 18px;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: #0056b3;
 }

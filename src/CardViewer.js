@@ -28,12 +28,11 @@ class CardViewer extends React.Component {
     }
 
     render() {
-        console.log("CARDS HAVE LOADED?: ", isLoaded(this.props.cards));
-
         if (!isLoaded(this.props.cards)) {
             console.log('Cards are still loading...');
             return <div>Loading...</div>;
         }
+        console.log("CARDS HAVE LOADED?: ", isLoaded(this.props.cards));
 
         if (isEmpty(this.props.cards)) {
             console.log('No cards found...');
@@ -57,7 +56,7 @@ class CardViewer extends React.Component {
                 </div>
                 
                 <hr />
-                <Link to="/">Go to homepage</Link>
+                <Link to="/">Go Home</Link>
             </div>
         );
     }
